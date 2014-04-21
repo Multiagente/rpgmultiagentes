@@ -1,8 +1,10 @@
 package npc;
 
+import java.util.List;
 import java.util.Random;
 
 import map.Map;
+import map.Square;
 import jade.core.Agent;
 import jade.core.behaviours.TickerBehaviour;
 
@@ -14,7 +16,6 @@ public class Wolf extends Npc {
 
 	// This reference is necessary cuz i cannot acces this instance inside inner
 	// classes
-	public Npc mySelf = this;
 
 	public void setup() {
 		// Initialize the map
@@ -60,5 +61,13 @@ public class Wolf extends Npc {
 		System.out.println(this.getActualPosition().getDescription());
 		System.out.println("-----------------------");
 
+	}
+	
+	@Override
+	public List<Square> getPositions(List<Square> arrayMap) {
+		
+		//temp logic here:
+		List<Square> options = arrayMap.subList(0, 2);
+		return options;
 	}
 }
