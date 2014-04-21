@@ -51,7 +51,7 @@ public abstract class Item {
 		return itemCost;
 	}
 	
-	public void setItemRarity(ClassificationOfItemRarity itemRarity) {
+	protected void setItemRarity(ClassificationOfItemRarity itemRarity) {
 		this.itemRarity = itemRarity;
 	}
 	
