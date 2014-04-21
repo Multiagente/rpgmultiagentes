@@ -9,30 +9,39 @@ public class Armor extends Item {
 	private int penaltyDexterity = 0;
 	private int armorFailure = 0;
 	private int displacementCapacity = 0;
+	private int armorRarityBonus = 0;
 	private double rateArcaneSpellFailure = 0;
-	
-	public Armor(String denomination, double totalWeight) {
+
+	public Armor(String denomination, double totalWeight,
+			ClassificationOfItemRarity rarity) {
+
 		super(denomination, totalWeight);
+
+		this.setArmorRarityBonus(rarity);
 	}
 
 	public int getMaxArmorBonus() {
 		return maxArmorBonus;
 	}
-	
+
 	public int getPenaltyDexterity() {
 		return penaltyDexterity;
 	}
-	
+
 	public int getArmorFailure() {
 		return armorFailure;
 	}
-	
+
 	public int getDisplacementCapacity() {
 		return displacementCapacity;
 	}
-	
+
 	public double getRateArcaneSpellFailure() {
 		return rateArcaneSpellFailure;
+	}
+
+	public int getArmorRarityBonus() {
+		return armorRarityBonus;
 	}
 
 	public void setMaxArmorBonus(int maxArmorBonus) {
@@ -53,5 +62,37 @@ public class Armor extends Item {
 
 	public void setRateArcaneSpellFailure(double rateArcaneSpellFailure) {
 		this.rateArcaneSpellFailure = rateArcaneSpellFailure;
+	}
+
+	private void setArmorRarityBonus(ClassificationOfItemRarity rarity) {
+		switch (rarity) {
+			case COMMON:
+				this.armorRarityBonus = 0;
+				calculateNewArmorBonus(armorRarityBonus);
+				break;
+
+			case UNCOMMON:		
+				this.armorRarityBonus = 2;
+				calculateNewArmorBonus(armorRarityBonus);
+				break;
+
+			case RARE:		
+				this.armorRarityBonus = 3;
+				calculateNewArmorBonus(armorRarityBonus);
+				break;
+
+			case UNIQUE:	
+				this.armorRarityBonus = 5;
+				calculateNewArmorBonus(armorRarityBonus);
+				break;
+				
+			default:
+				this.armorRarityBonus = 0;
+		}
+	}
+
+	private void calculateNewArmorBonus(int rarityBonus) {
+		int newArmorBonus = maxArmorBonus + rarityBonus;	
+		this.setMaxArmorBonus(newArmorBonus);
 	}
 }
