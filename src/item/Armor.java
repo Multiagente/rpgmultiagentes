@@ -68,31 +68,22 @@ public class Armor extends Item {
 		switch (rarity) {
 			case COMMON:
 				this.armorRarityBonus = 0;
-				calculateNewArmorBonus(armorRarityBonus);
 				break;
 
-			case UNCOMMON:		
+			case UNCOMMON:
 				this.armorRarityBonus = 2;
-				calculateNewArmorBonus(armorRarityBonus);
 				break;
 
-			case RARE:		
+			case RARE:
 				this.armorRarityBonus = 3;
-				calculateNewArmorBonus(armorRarityBonus);
 				break;
 
-			case UNIQUE:	
+			case UNIQUE:
 				this.armorRarityBonus = 5;
-				calculateNewArmorBonus(armorRarityBonus);
 				break;
 				
 			default:
 				this.armorRarityBonus = 0;
 		}
-	}
-
-	private void calculateNewArmorBonus(int rarityBonus) {
-		int newArmorBonus = maxArmorBonus + rarityBonus;	
-		this.setMaxArmorBonus(newArmorBonus);
 	}
 }
