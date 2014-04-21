@@ -4,37 +4,50 @@ package item;
  * adventure game. Through this model can form more specialized items, like weapons and armor. 
  * So it is an abstract class. It only intention is to model items does not exist concretely. */
 public abstract class Item {
-
-	private String name = "";
-	private double weight = 0;
-	private double cost = 0;
+	
+	public enum classificationOfItemRarity {
+		COMMON, UNCOMMON, RARE, UNIQUE
+	}
+	
+	private int itemRarity = 0;
+	private String itemName = "";
+	private double itemWeight = 0;	// The weight is measured in kilograms
+	private double itemCost = 0;	// The cost is measured in Gold Pieces
 
 	public Item(String denomination, double totalWeight) {	
 		this.setName(denomination);
 		this.setWeight(totalWeight);
 	}
+	
+	public int getItemRarity() {
+		return itemRarity;
+	}
 
 	public String getName() {
-		return name;
+		return itemName;
 	}
 	
 	public double getWeight() {
-		return weight;
+		return itemWeight;
 	}
 	
 	public double getCost() {
-		return cost;
+		return itemCost;
+	}
+	
+	public void setItemRarity(int itemRarity) {
+		this.itemRarity = itemRarity;
 	}
 	
 	public void setCost(double value) {
-		this.cost = value;
+		this.itemCost = value;
 	}
 
 	private void setName(String denomination) {
-		this.name = denomination;
+		this.itemName = denomination;
 	}
 
 	private void setWeight(double totalWeight) {
-		this.weight = totalWeight;
+		this.itemWeight = totalWeight;
 	}
 }
