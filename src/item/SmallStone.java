@@ -7,9 +7,9 @@ public class SmallStone extends Item {
 	private static final String NAME_OF_STONE = "Small Stone";
 	private static final double STONE_WEIGHT = 0.250;
 	
-	private SmallStone instanceOfSmallStone = null;
+	private static SmallStone instanceOfSmallStone = null;
 	
-	public SmallStone(String denomination, double totalWeight) {
+	private SmallStone(String denomination, double totalWeight) {
 		super(denomination, totalWeight);
 		
 		this.setItemRarity(ClassificationOfItemRarity.COMMON);
