@@ -17,11 +17,11 @@ public class Square {
 	
 	}
 
-	public Square(Map map, String title, String description) {
+	public Square(World map, String title, String description) {
 
 		this.title = title;
 		this.description = description;
-		Map.addSquare(this);
+		World.addSquare(this);
 	}
 
 	public String getTitle() {

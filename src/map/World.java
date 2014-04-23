@@ -3,12 +3,12 @@ package map;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Map {
+public class World {
 
-	private static Map instance = null;
+	private static World instance = null;
 	private static List<Square> arrayMap = new ArrayList<Square>();
 
-	private Map() {
+	private World() {
 
 	}
 
@@ -17,7 +17,7 @@ public class Map {
 		return arrayMap;
 	}
 
-	public static Map getMap() {
+	public static World getMap() {
 
 		if (instance == null) {
 			/*
@@ -26,7 +26,7 @@ public class Map {
 			 * the square, items, description etc. This is being done by the
 			 * method createDefaultMap().
 			 */
-			instance = new Map();
+			instance = new World();
 			createDefaultMap();
 		}
 
@@ -34,7 +34,7 @@ public class Map {
 	}
 
 	public static void addSquare(Square square) {
-		Map.getArrayMap().add(square);
+		World.getArrayMap().add(square);
 	}
 
 	private static void createDefaultMap() {
