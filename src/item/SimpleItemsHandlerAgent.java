@@ -93,5 +93,25 @@ public class SimpleItemsHandlerAgent extends Agent {
 		private void replaceItem(Square currentSquare) {
 
 		}
+		
+		/* Identifies which item is missing from a square. */
+		private Item identifyItem(Square currentSquare) {
+			
+			List<Item> correctListItems = itemsDictionary.get(currentSquare);
+			List<Item> itemsCurrentSquare = currentSquare.getItems();
+			Item missingItem = null;
+			
+			for(Item checkingItem : correctListItems) {
+				
+				if(itemsCurrentSquare.contains(checkingItem)) {
+					// Nothing To Do
+					
+				} else {
+					missingItem = checkingItem;
+				}
+			}
+			
+			return missingItem;
+		}
 	}
 }
