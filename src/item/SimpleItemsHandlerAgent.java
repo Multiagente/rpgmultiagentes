@@ -19,55 +19,62 @@ public class SimpleItemsHandlerAgent extends Agent {
 
 	private static final long serialVersionUID = 1819175160277518404L;
 	private static final long TEN_MINUTES = 600000;
-	
+
 	protected void setup() {
 		addBehaviour(new ReplacementBehaviour(this, TEN_MINUTES));
 	}
-	
-	/* This behavior is meant to check whether a specific item is missing in a given location. 
-	 * If it is missing, the item must be replaced. */
+
+	/* This behavior is meant to check whether a specific item is missing in a
+	 * given location. If it is missing, the item must be replaced.
+	 */
 	private class ReplacementBehaviour extends TickerBehaviour {
-		
+
 		private static final long serialVersionUID = 1L;
-		
-		private static final boolean MISSING = false;
-		private static final boolean PRESENT = true;
-		
+
+		private static final boolean MISSING_ITEM = false;
+		private static final boolean PRESENT_ITEM = true;
+
 		private List<Square> squaresWorld = World.getArrayMap();
-		private Map<Square, List<Item>> itemsDictionary = new HashMap();
-		
+		private Map<Square, List<Item>> itemsDictionary = new HashMap<Square, List<Item>>();
+
 		public ReplacementBehaviour(Agent itemHandlerAgent, long period) {
 			super(itemHandlerAgent, period);
 		}
-		
+
 		@Override
 		protected void onTick() {
-			// TODO: Check if there are any items missing somewhere Square (somewhere in the world).
-			// 	TODO: If the item is missing, identify and replace it.
-			//	TODO: If not missing, nothing to do.
+			searchMissingItems();
 		}
-		
-		private void travelTheWorld() {
-			// TODO: Through each square in the world.
-			//	TODO: In each square, check for any missing item.
-			//	TODO: In each square, identify the missing item.
-			//	TODO: For each missing item, replace it.
+
+		/* Through this method go up around the world (by means of squares).
+		 * This way you can analyze each of squares and observe if there are any
+		 * missing item. */
+		private void searchMissingItems() {
+
+			for (Square currentSquare : squaresWorld) {
+				boolean verifiedItem = PRESENT_ITEM;
+
+				verifiedItem = checkForItems(currentSquare);
+
+				if (verifiedItem == PRESENT_ITEM) {
+					// Nothing To Do
+
+				} else if (verifiedItem == MISSING_ITEM) {
+					replaceItem(currentSquare);
+
+				} else {
+					// Nothing To Do
+				}
+			}
 		}
-		
+
 		private boolean checkForItems(Square currentSquare) {
-			// TODO: Compare the items in each square with the dictionary items.
-			// 	TODO: If the item is missing, return MISSING.
-			//	TODO: If the item is present, return PRESENT.
-			
-			return PRESENT;
-		}
-		
-		private void identifyItem(Square currentSquare) {
-			
+
+			return PRESENT_ITEM;
 		}
 		
 		private void replaceItem(Square currentSquare) {
-			// TODO: Replace a copy of the item back to the Square
+			
 		}
 	}
 }

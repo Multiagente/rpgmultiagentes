@@ -7,7 +7,7 @@ public abstract class Item {
 	
 	/* This enumeration helps organize the types of items in relation 
 	 * to its rarity in the game world. */
-	public enum ClassificationOfItemRarity {
+	protected enum ClassificationOfRarity {
 		COMMON("Common"),
 		UNCOMMON("Uncommon"),
 		RARE("Rare"),
@@ -15,7 +15,7 @@ public abstract class Item {
 		
 		private final String rarityValue;
 		
-		ClassificationOfItemRarity(String rarity) {
+		ClassificationOfRarity(String rarity) {
 			this.rarityValue = rarity;
 		}
 		
@@ -25,7 +25,7 @@ public abstract class Item {
 		}
 	}
 	
-	private ClassificationOfItemRarity itemRarity = ClassificationOfItemRarity.COMMON;
+	private ClassificationOfRarity itemRarity = ClassificationOfRarity.COMMON;
 	private String itemName = "";
 	private double itemWeight = 0;	// The weight is measured in kilograms
 	private double itemCost = 0;	// The cost is measured in Gold Pieces
@@ -35,7 +35,7 @@ public abstract class Item {
 		this.setWeight(totalWeight);
 	}
 	
-	public ClassificationOfItemRarity getItemRarity() {
+	public ClassificationOfRarity getItemRarity() {
 		return itemRarity;
 	}
 
@@ -51,7 +51,7 @@ public abstract class Item {
 		return itemCost;
 	}
 	
-	protected void setItemRarity(ClassificationOfItemRarity itemRarity) {
+	protected void setItemRarity(ClassificationOfRarity itemRarity) {
 		this.itemRarity = itemRarity;
 	}
 	

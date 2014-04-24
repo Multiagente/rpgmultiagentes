@@ -11,10 +11,10 @@ public class Weapon extends Item {
 	private int decisiveIncrease = 0;
 	private int incrementOfDistance = 0;
 	private int weaponRarityBonus = 0;
-	private String typeOfWeapon = "";
+	private String weaponType = "";
 
 	public Weapon(String denomination, double totalWeight,
-			ClassificationOfItemRarity rarity) {
+			ClassificationOfRarity rarity) {
 		
 		super(denomination, totalWeight);
 		
@@ -34,7 +34,7 @@ public class Weapon extends Item {
 	}
 
 	public String getTypeOfWeapon() {
-		return typeOfWeapon;
+		return weaponType;
 	}
 
 	public int getWeaponRarityBonus() {
@@ -54,10 +54,10 @@ public class Weapon extends Item {
 	}
 
 	public void setTypeOfWeapon(String typeOfWeapon) {
-		this.typeOfWeapon = typeOfWeapon;
+		this.weaponType = typeOfWeapon;
 	}
 
-	private void setWeaponRarityBonus(ClassificationOfItemRarity rarity) {
+	private void setWeaponRarityBonus(ClassificationOfRarity rarity) {
 		switch(rarity) {
 			case COMMON:
 				this.weaponRarityBonus = 0;

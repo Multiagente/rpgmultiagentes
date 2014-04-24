@@ -13,7 +13,7 @@ public class Armor extends Item {
 	private double rateArcaneSpellFailure = 0;
 
 	public Armor(String denomination, double totalWeight,
-			ClassificationOfItemRarity rarity) {
+			ClassificationOfRarity rarity) {
 
 		super(denomination, totalWeight);
 
@@ -64,7 +64,7 @@ public class Armor extends Item {
 		this.rateArcaneSpellFailure = rateArcaneSpellFailure;
 	}
 
-	private void setArmorRarityBonus(ClassificationOfItemRarity rarity) {
+	private void setArmorRarityBonus(ClassificationOfRarity rarity) {
 		switch (rarity) {
 			case COMMON:
 				this.armorRarityBonus = 0;

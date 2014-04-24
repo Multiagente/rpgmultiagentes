@@ -12,7 +12,7 @@ public class SmallStone extends Item {
 	private SmallStone(String denomination, double totalWeight) {
 		super(denomination, totalWeight);
 		
-		this.setItemRarity(ClassificationOfItemRarity.COMMON);
+		this.setItemRarity(ClassificationOfRarity.COMMON);
 	}
 	
 	public SmallStone getInstance() {
