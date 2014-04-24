@@ -25,8 +25,7 @@ public class SimpleItemsHandlerAgent extends Agent {
 	}
 
 	/* This behavior is meant to check whether a specific item is missing in a
-	 * given location. If it is missing, the item must be replaced.
-	 */
+	 * given location. If it is missing, the item must be replaced. */
 	private class ReplacementBehaviour extends TickerBehaviour {
 
 		private static final long serialVersionUID = 1L;
@@ -68,13 +67,31 @@ public class SimpleItemsHandlerAgent extends Agent {
 			}
 		}
 
+		/* Makes checking if there is an item missing from a square. To do so, makes use of a 
+		 * collection of objects, a Map. Through this map compares the content that should be in 
+		 * square and what actually is in it. */
 		private boolean checkForItems(Square currentSquare) {
 
-			return PRESENT_ITEM;
+			List<Item> itemsCurrentSquare = currentSquare.getItems();
+			boolean verifiedItem = PRESENT_ITEM;
+
+			for (int index = 0; index < itemsCurrentSquare.size(); index++) {
+
+				if (itemsDictionary.get(currentSquare).equals(
+						itemsCurrentSquare)) {
+					
+					verifiedItem = PRESENT_ITEM;
+
+				} else {
+					verifiedItem = MISSING_ITEM;
+				}
+			}
+
+			return verifiedItem;
 		}
-		
+
 		private void replaceItem(Square currentSquare) {
-			
+
 		}
 	}
 }
