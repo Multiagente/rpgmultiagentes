@@ -91,7 +91,10 @@ public class SimpleItemsHandlerAgent extends Agent {
 		}
 
 		private void replaceItem(Square currentSquare) {
-
+			
+			Item missingItem = identifyItem(currentSquare);
+			
+			currentSquare.addItem(missingItem);
 		}
 		
 		/* Identifies which item is missing from a square. */
