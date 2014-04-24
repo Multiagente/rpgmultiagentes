@@ -87,4 +87,8 @@ public class Square {
 	public void removeItem(Item item) {
 		items.remove(item);
 	}
+	
+	public List<Item> getItems() {
+		return this.items;
+	}
 }
