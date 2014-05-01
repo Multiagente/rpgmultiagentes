@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import map.Square;
-import map.World;
+import map.Map;
 
 /* This agent is an administrator of items. More specifically, It manages simple items, 
  * with little differentiation among his peers. As a stone that does not have many differences 
@@ -32,7 +32,7 @@ public class ItemsHandlerAgent extends Agent {
 		private static final boolean MISSING_ITEM = false;
 		private static final boolean PRESENT_ITEM = true;
 
-		private List<Square> squaresWorld = World.getArrayMap();
+		private List<Square> squaresWorld = Map.getArrayMap();
 		private java.util.Map<Square, List<Item>> itemsCatalog = new HashMap<Square, List<Item>>();
 
 		public ReplacementBehaviour(Agent itemHandlerAgent, long period) {

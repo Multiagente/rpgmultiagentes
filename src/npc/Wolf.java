@@ -2,7 +2,7 @@ package npc;
 
 import java.util.Random;
 
-import map.World;
+import map.Map;
 import jade.core.Agent;
 import jade.core.behaviours.TickerBehaviour;
 
@@ -18,11 +18,11 @@ public class Wolf extends Npc {
 
 	public void setup() {
 		// Initialize the map
-		World.getMap();
+		Map.getMap();
 		// Define the initial position to square 0
-		this.setActualPosition(World.getArrayMap().get(0));
+		this.setActualPosition(Map.getArrayMap().get(0));
 		// Add a reference of the Npc to the square
-		World.getArrayMap().get(0).addNpc(this);
+		Map.getArrayMap().get(0).addNpc(this);
 		addBehaviour(new MoveBehaviour(this, 3000));
 	}
 
