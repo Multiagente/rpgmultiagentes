@@ -3,7 +3,7 @@ package item;
 /* This class is a specialization of the abstract class Item. Is protective items for 
  * both the player characters and for the NPCs. Can be classified into common, uncommon, 
  * rare and unique (legendary) items. */
-public class Armor extends Item {
+public abstract class Armor extends Item {
 
 	private int maxArmorBonus = 0;
 	private int penaltyDexterity = 0;
@@ -44,23 +44,23 @@ public class Armor extends Item {
 		return armorRarityBonus;
 	}
 
-	public void setMaxArmorBonus(int maxArmorBonus) {
+	protected void setMaxArmorBonus(int maxArmorBonus) {
 		this.maxArmorBonus = maxArmorBonus;
 	}
 
-	public void setPenaltyDexterity(int penaltyDexterity) {
+	protected void setPenaltyDexterity(int penaltyDexterity) {
 		this.penaltyDexterity = penaltyDexterity;
 	}
 
-	public void setArmorFailure(int armorFailure) {
+	protected void setArmorFailure(int armorFailure) {
 		this.armorFailure = armorFailure;
 	}
 
-	public void setDisplacementCapacity(int displacementCapacity) {
+	protected void setDisplacementCapacity(int displacementCapacity) {
 		this.displacementCapacity = displacementCapacity;
 	}
 
-	public void setRateArcaneSpellFailure(double rateArcaneSpellFailure) {
+	protected void setRateArcaneSpellFailure(double rateArcaneSpellFailure) {
 		this.rateArcaneSpellFailure = rateArcaneSpellFailure;
 	}
 
