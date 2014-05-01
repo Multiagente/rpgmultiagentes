@@ -2,7 +2,7 @@ package item;
 
 /* This class is a specialization of the abstract class Item. Represents the most mundane items 
  * in the game world. Are items such as backpacks, torches, clothing, ropes, tents and food.*/
-public class SmallStone extends Item {
+public class SmallStone extends SimpleItem {
 	
 	private static final String NAME_OF_STONE = "Small Stone";
 	private static final double STONE_WEIGHT = 0.250;
