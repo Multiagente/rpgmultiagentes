@@ -5,7 +5,6 @@ import jade.core.behaviours.TickerBehaviour;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import map.Square;
 import map.World;
@@ -15,7 +14,7 @@ import map.World;
  * from one another stone. This agent is intended to maintain this type of item always 
  * reappearing on the game world. If an item is withdrawn from the place, or destroyed, 
  * this agent will reset this item. */
-public class SimpleItemsHandlerAgent extends Agent {
+public class ItemsHandlerAgent extends Agent {
 
 	private static final long serialVersionUID = 1819175160277518404L;
 	private static final long TEN_MINUTES = 600000;
@@ -28,13 +27,13 @@ public class SimpleItemsHandlerAgent extends Agent {
 	 * given location. If it is missing, the item must be replaced. */
 	private class ReplacementBehaviour extends TickerBehaviour {
 
-		private static final long serialVersionUID = 1L;
-
+		private static final long serialVersionUID = 5351217842335272255L;
+		
 		private static final boolean MISSING_ITEM = false;
 		private static final boolean PRESENT_ITEM = true;
 
 		private List<Square> squaresWorld = World.getArrayMap();
-		private Map<Square, List<Item>> itemsDictionary = new HashMap<Square, List<Item>>();
+		private java.util.Map<Square, List<Item>> itemsCatalog = new HashMap<Square, List<Item>>();
 
 		public ReplacementBehaviour(Agent itemHandlerAgent, long period) {
 			super(itemHandlerAgent, period);
@@ -58,11 +57,10 @@ public class SimpleItemsHandlerAgent extends Agent {
 				if (verifiedItem == PRESENT_ITEM) {
 					// Nothing To Do
 
-				} else if (verifiedItem == MISSING_ITEM) {
+				} else {
+					// Replace missing item
 					replaceItem(currentSquare);
 
-				} else {
-					// Nothing To Do
 				}
 			}
 		}
@@ -75,9 +73,7 @@ public class SimpleItemsHandlerAgent extends Agent {
 			List<Item> itemsCurrentSquare = currentSquare.getItems();
 			boolean verifiedItem = PRESENT_ITEM;
 
-			for (int index = 0; index < itemsCurrentSquare.size(); index++) {
-
-				if (itemsDictionary.get(currentSquare).equals(
+				if (itemsCatalog.get(currentSquare).equals(
 						itemsCurrentSquare)) {
 					
 					verifiedItem = PRESENT_ITEM;
@@ -85,7 +81,6 @@ public class SimpleItemsHandlerAgent extends Agent {
 				} else {
 					verifiedItem = MISSING_ITEM;
 				}
-			}
 
 			return verifiedItem;
 		}
@@ -100,8 +95,9 @@ public class SimpleItemsHandlerAgent extends Agent {
 		/* Identifies which item is missing from a square. */
 		private Item identifyItem(Square currentSquare) {
 			
-			List<Item> correctListItems = itemsDictionary.get(currentSquare);
+			List<Item> correctListItems = itemsCatalog.get(currentSquare);
 			List<Item> itemsCurrentSquare = currentSquare.getItems();
+			
 			Item missingItem = null;
 			
 			for(Item checkingItem : correctListItems) {

@@ -18,7 +18,7 @@ public class SmallStone extends Item {
 	public SmallStone getInstance() {
 		
 		if(instanceOfSmallStone != null) {
-			// Nothing to do
+			// Nothing To Do
 			
 		} else {
 			instanceOfSmallStone = new SmallStone(NAME_OF_STONE, STONE_WEIGHT);
