@@ -6,19 +6,23 @@ import java.util.Random;
 import map.Map;
 import map.Square;
 import jade.core.Agent;
+import jade.core.behaviours.CyclicBehaviour;
+import jade.lang.acl.ACLMessage;
 
 public abstract class Npc extends Agent {
 
-	private static final long serialVersionUID = 508183949563528426L;
+	private static final long serialVersionUID = 50;
 
 	private Square actualPosition = null;
-	
 	protected Npc mySelf;
+	private LevelOfChallenge level;
+	
 	
 	public Square getActualPosition() {
 		return actualPosition;
 	}
-
+	
+	
 	public void setActualPosition(Square actualPosition) {
 		this.actualPosition = actualPosition;
 	}
@@ -34,5 +38,9 @@ public abstract class Npc extends Agent {
 
 	public abstract List<Square> getPositions(List<Square> arrayMap);
 
-
+	/**Start agent */
+	protected void  setup() {
+		addBehaviour(new CheckController());
+		
+	}
 }
