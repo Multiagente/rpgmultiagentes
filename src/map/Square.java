@@ -2,11 +2,9 @@ package map;
 
 import item.Item;
 import jade.core.AID;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import character.Character;
+import npc.Npc;
 
 public class Square {
 
@@ -90,4 +88,19 @@ public class Square {
 		return charsAID;
 	}
 
+	public void addNpc(Npc npc) {
+		npcs.add(npc);
+	}
+
+	public void removeNpc(Npc npc) {
+		npcs.remove(npc);
+	}
+
+	public void addItem(Item item) {
+		items.add(item);
+	}
+
+	public void removeItem(Item item) {
+		items.remove(item);
+	}
 }

@@ -13,7 +13,6 @@ public class Map {
 	}
 
 	public synchronized List<Square> getArrayMap() {
-
 		return arrayMap;
 	}
 
@@ -60,5 +59,5 @@ public class Map {
 		firstRoom.setSouth(fourthRoom);
 		
 	}
-	
+
 }
