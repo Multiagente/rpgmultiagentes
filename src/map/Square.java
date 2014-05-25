@@ -2,15 +2,17 @@ package map;
 
 import item.Item;
 import jade.core.AID;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import npc.Npc;
 
 public class Square {
 
 	private String title;
 	private String description;
-	private List<Item> item;
+	private List<Item> itens;
 	private List<AID> charsAID;
 	private Square north, south, east, west = null;
 
@@ -88,19 +90,11 @@ public class Square {
 		return charsAID;
 	}
 
-	public void addNpc(Npc npc) {
-		npcs.add(npc);
-	}
-
-	public void removeNpc(Npc npc) {
-		npcs.remove(npc);
-	}
-
 	public void addItem(Item item) {
-		items.add(item);
+		itens.add(item);
 	}
 
 	public void removeItem(Item item) {
-		items.remove(item);
+		itens.remove(item);
 	}
 }

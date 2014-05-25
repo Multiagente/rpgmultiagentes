@@ -18,11 +18,12 @@ public class Wolf extends Npc {
 
 	public void setup() {
 		// Initialize the map
-		Map.getMap();
+		Map map = Map.getMap();
 		// Define the initial position to square 0
-		this.setActualPosition(Map.getArrayMap().get(0));
+		this.setActualPosition(map.getArrayMap().get(0));
 		// Add a reference of the Npc to the square
-		Map.getArrayMap().get(0).addNpc(this);
+		//TODO fazer mapa funcionar para npcs
+		//map.getArrayMap().get(0).addNpc(this);
 		addBehaviour(new MoveBehaviour(this, 3000));
 	}
 
