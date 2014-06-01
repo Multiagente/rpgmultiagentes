@@ -6,13 +6,11 @@ import jade.core.AID;
 import java.util.ArrayList;
 import java.util.List;
 
-import npc.Npc;
-
 public class Square {
 
 	private String title;
 	private String description;
-	private List<Item> itens;
+	private List<Item> items;
 	private List<AID> charsAID;
 	private Square north, south, east, west = null;
 
@@ -91,10 +89,14 @@ public class Square {
 	}
 
 	public void addItem(Item item) {
-		itens.add(item);
+		items.add(item);
 	}
 
 	public void removeItem(Item item) {
-		itens.remove(item);
+		items.remove(item);
+	}
+	
+	public List<Item> getItems() {
+		return this.items;
 	}
 }
