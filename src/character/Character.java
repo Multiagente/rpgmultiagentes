@@ -39,6 +39,12 @@ public class Character extends Agent {
 
 	Map map = null;
 
+	//atributos do player
+	private int healthPoints = 100;
+	private int defensePoints = 2;
+	private int attackPoints = 20;
+	private int experiencePoints = 10;
+
 	public void setPosition(Square sqr) {
 		this.positionNow = sqr;
 	}
@@ -72,8 +78,11 @@ public class Character extends Agent {
 		}
 
 		
-		addBehaviour(new Move(this,500));
-		addBehaviour(new HandleRequest());
+		//addBehaviour(new Move(this,500));
+		//addBehaviour(new HandleMoveRequest());
+		
+		addBehaviour(new LookForFight(this, 2000));
+		addBehaviour(new HandleFightRequest());
 	}
 
 	protected void takeDown() {
@@ -102,8 +111,32 @@ public class Character extends Agent {
 			exitRoom();
 		}	
 	}
+
+	private class LookForFight extends TickerBehaviour{
+
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 4461404912449987804L;
+		
+		public LookForFight(Agent a, long period) {
+			super(a, period);
+			// TODO Auto-generated constructor stub
+		}
+
+		@Override
+		protected void onTick() {
+			AID id;
+			List<AID> listChars = getPosition().charsInside();
+			id = listChars.get((int) (Math.random()*1000) % listChars.size());
+			fight(id);
+		}
+		
+		
+		
+	}
 	
-	private class HandleRequest extends OneShotBehaviour{
+	private class HandleMoveRequest extends OneShotBehaviour{
 
 		/**
 		 * 
@@ -182,7 +215,7 @@ public class Character extends Agent {
 		msg.setReplyByDate(new Date(System.currentTimeMillis() + 1000));
 		msg.setContent("leave");
 		this.send(msg);
-		System.out.println("Agent successfully performed the requested action");
+		
 		addBehaviour(new AchieveREInitiator(this, msg) {
 			/**
 			 * 
@@ -192,7 +225,7 @@ public class Character extends Agent {
 			boolean canLeave = true;
 			
 			protected void handleInform(ACLMessage inform) {
-				System.out.println("Agent " + inform.getSender().getName() + "opose.");
+				System.out.println("Agent " + inform.getSender().getName() + " opose your left.");
 				//TODO iniciar ação de luta.
 				canLeave = false;
 			}
@@ -226,6 +259,98 @@ public class Character extends Agent {
 		});
 	}
 
+	private class HandleFightRequest extends OneShotBehaviour{
+
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 6230563887514017233L;
+		
+		@Override
+		public void action() {
+			MessageTemplate template = MessageTemplate.and(
+			  		MessageTemplate.MatchProtocol(FIPANames.InteractionProtocol.FIPA_REQUEST),
+			  		MessageTemplate.MatchPerformative(ACLMessage.REQUEST) );
+			  		
+					mySelf.addBehaviour(new AchieveREResponder(mySelf, template) {
+						/**
+						 * 
+						 */
+						private static final long serialVersionUID = 1L;
+
+						protected ACLMessage prepareResponse(ACLMessage request) throws NotUnderstoodException, RefuseException {
+							return null;
+						}
+
+						protected ACLMessage prepareResultNotification(ACLMessage request, ACLMessage response) throws FailureException {
+							// Quanto de dano esse agente perde.
+							int atk = Integer.parseInt(request.getContent());
+							damageHealthPoints(atk);
+							System.out.println("["+getLocalName()+"]{HP:"+getHealthPoints()+"} Received a hit from ["+request.getSender().getLocalName()+"]{HIT:"+request.getContent()+"}");
+							ACLMessage inform = request.createReply();
+							inform.setPerformative(ACLMessage.INFORM);
+							int exp = getHealthPoints()-(atk-getDefensePoints());
+							inform.setContent(String.valueOf(exp));
+							return inform;
+						}
+
+						
+					} );
+			  }
+	}
+
+	
+	private void fight(AID target) {
+		ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
+		AID receiver = target;
+		if(this.getAID()!=receiver)
+			msg.addReceiver(receiver);
+		msg.setProtocol(FIPANames.InteractionProtocol.FIPA_REQUEST);
+		msg.setReplyByDate(new Date(System.currentTimeMillis() + 1000));
+		msg.setContent(String.valueOf(getAttackPoints()));
+		this.send(msg);
+		
+		addBehaviour(new AchieveREInitiator(this, msg) {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1202650982398071473L;
+			
+			protected void handleInform(ACLMessage inform) {
+				// recebe os experiencePoints ao final de cada golpe.
+				int exp =(int) (Integer.parseInt(inform.getContent())/getExperiencePoints());
+				System.out.println("["+getLocalName()+"]: got "+ exp +" experience points from ["+inform.getSender().getLocalName() +"]");
+				updateExperiencePoints(exp);
+			}
+
+			protected void handleAllResultNotifications(Vector notifications) {
+				//System.out.println("[FIGHT:"+getLocalName()+"] Timeout expired: missing "	+ (notifications.size()) + " responses");
+			}
+		});
+	}
+	
+	private int getAttackPoints() {
+		// TODO Auto-generated method stub
+		return this.attackPoints;
+	}
+
+	private int getExperiencePoints() {
+		return this.experiencePoints;
+	}
+
+	private void updateExperiencePoints(int value) {
+		this.experiencePoints += value;		
+	}
+	
+		
+	private int getDefensePoints() {
+		return this.defensePoints;
+	}
+	
+	private void setDefensePoints(int value) {
+		this.defensePoints = value;
+	}
+	
 	private void updatePosition(Square newPos) throws FIPAException {
 
 		Square sqr = getPosition();
@@ -234,6 +359,26 @@ public class Character extends Agent {
 		sqr = getPosition();
 		sqr.addChar(this.getAID());
 		System.out.println(newPos.getDescription());
+	}
+	
+	public int getHealthPoints() {
+		// TODO Auto-generated method stub
+		return this.healthPoints;
+	}
+	
+	public void setHealthPoints(int value){
+		this.healthPoints = value;
+	}
+	
+	private void damageHealthPoints(int value) {
+		// value é o quanto a vida deste agente será reduzida.
+		if(getHealthPoints()<0){
+			setHealthPoints(0);
+			getPosition().removeChar(this.getAID());
+			this.doDelete();
+		}
+		else
+			setHealthPoints(getHealthPoints()-(value-defensePoints));
 	}
 
 	private Square nextMove() {
