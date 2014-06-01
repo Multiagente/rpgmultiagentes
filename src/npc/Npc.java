@@ -16,7 +16,7 @@ public abstract class Npc extends Agent {
 	private Square actualPosition = null;
 	protected Npc mySelf;
 	private LevelOfChallenge level;
-	
+	private Map map = Map.getMap();
 	
 	public Square getActualPosition() {
 		return actualPosition;
@@ -29,10 +29,11 @@ public abstract class Npc extends Agent {
 	
 	public void create(){
 		
-		List<Square> options = getPositions(Map.getArrayMap());
+		List<Square> options = getPositions(map.getArrayMap());
 		Random generator = new Random();
 		int position = generator.nextInt(options.size());
-		options.get(position).addNpc(mySelf);
+		//TODO: organizar a inserção de npcs separadamente dos characters
+		options.get(position).addAgent(getAID());
 		System.out.println("npc created at "+ options.get(position).getTitle());
 	}
 

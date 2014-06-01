@@ -68,7 +68,7 @@ public class Character extends Agent {
 		sd.setType("MessageService");
 		sd.setName("Mail");
 		dfd.addServices(sd);
-		getPosition().addChar(this.getAID());
+		getPosition().addAgent(this.getAID());
 
 		try {
 			DFService.register(this, dfd);
@@ -357,7 +357,7 @@ public class Character extends Agent {
 		sqr.removeChar(this.getAID());
 		setPosition(newPos);
 		sqr = getPosition();
-		sqr.addChar(this.getAID());
+		sqr.addAgent(this.getAID());
 		System.out.println(newPos.getDescription());
 	}
 	

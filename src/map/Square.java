@@ -75,7 +75,7 @@ public class Square {
 	}
 
 	// metodos para adicionar e retirar da lista os players que estão na sala..
-	public synchronized void addChar(AID character) {
+	public synchronized void addAgent(AID character) {
 		charsAID.add(character);
 	}
 
