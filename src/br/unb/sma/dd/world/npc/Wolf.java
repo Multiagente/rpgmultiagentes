@@ -1,10 +1,10 @@
-package npc;
+package br.unb.sma.dd.world.npc;
 
 import java.util.List;
 import java.util.Random;
 
-import map.Map;
-import map.Square;
+import br.unb.sma.dd.world.map.Map;
+import br.unb.sma.dd.world.map.Square;
 import jade.core.Agent;
 import jade.core.behaviours.TickerBehaviour;
 

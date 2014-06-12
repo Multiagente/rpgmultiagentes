@@ -1,4 +1,4 @@
-package map;
+package br.unb.sma.dd.world.map;
 
 import java.util.ArrayList;
 import java.util.List;

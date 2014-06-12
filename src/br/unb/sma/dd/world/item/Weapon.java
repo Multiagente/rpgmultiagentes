@@ -1,4 +1,4 @@
-package item;
+package br.unb.sma.dd.world.item;
 
 /* This class is a specialization of the abstract class Item. Represents attack items for 
  * both the player characters and for the NPCs. There are different types of weapons in the 

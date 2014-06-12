@@ -1,10 +1,11 @@
-package map;
+package br.unb.sma.dd.world.map;
 
-import item.Item;
 import jade.core.AID;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import br.unb.sma.dd.world.item.Item;
 
 public class Square {
 

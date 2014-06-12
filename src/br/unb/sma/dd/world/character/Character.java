@@ -1,4 +1,4 @@
-package character;
+package br.unb.sma.dd.world.character;
 
 import jade.core.AID;
 import jade.core.Agent;
@@ -23,8 +23,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 
-import map.Map;
-import map.Square;
+import br.unb.sma.dd.world.map.Map;
+import br.unb.sma.dd.world.map.Square;
 
 public class Character extends Agent {
 

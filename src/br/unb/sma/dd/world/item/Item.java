@@ -1,4 +1,4 @@
-package item;
+package br.unb.sma.dd.world.item;
 
 /* This class represents the basic and essential attributes of any item in the world of 
  * adventure game. Through this model can form more specialized items, like weapons and armor. 

@@ -1,7 +1,7 @@
-package dao;
+package br.unb.sma.dd.infrastructure.dao;
 
-import persistenceHelper.DBConnector;
-import character.Character;
+import br.unb.sma.dd.infrastructure.persistenceHelper.DBConnector;
+import br.unb.sma.dd.world.character.Character;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.CommandResult;

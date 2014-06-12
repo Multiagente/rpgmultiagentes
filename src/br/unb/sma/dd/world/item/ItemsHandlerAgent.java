@@ -1,4 +1,4 @@
-package item;
+package br.unb.sma.dd.world.item;
 
 import jade.core.Agent;
 import jade.core.behaviours.TickerBehaviour;
@@ -6,8 +6,8 @@ import jade.core.behaviours.TickerBehaviour;
 import java.util.HashMap;
 import java.util.List;
 
-import map.Square;
-import map.Map;
+import br.unb.sma.dd.world.map.Map;
+import br.unb.sma.dd.world.map.Square;
 
 /* This agent is an administrator of items. More specifically, It manages simple items, 
  * with little differentiation among his peers. As a stone that does not have many differences 

@@ -1,4 +1,4 @@
-package persistenceHelper;
+package br.unb.sma.dd.infrastructure.persistenceHelper;
 
 import java.net.UnknownHostException;
 

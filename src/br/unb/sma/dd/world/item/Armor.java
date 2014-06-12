@@ -1,4 +1,4 @@
-package item;
+package br.unb.sma.dd.world.item;
 
 /* This class is a specialization of the abstract class Item. Is protective items for 
  * both the player characters and for the NPCs. Can be classified into common, uncommon, 

@@ -6,13 +6,12 @@ import jade.core.Runtime;
 import jade.wrapper.AgentContainer;
 import jade.wrapper.AgentController;
 import jade.wrapper.StaleProxyException;
-
 import jade.tools.*;
 
 import java.util.Iterator;
 
-import map.Map;
-import map.Square;
+import br.unb.sma.dd.world.map.Map;
+import br.unb.sma.dd.world.map.Square;
 
 public class Game {
 
