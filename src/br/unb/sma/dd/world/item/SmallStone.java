@@ -1,7 +1,11 @@
 package br.unb.sma.dd.world.item;
 
-/* This class is a specialization of the abstract class Item. Represents the most mundane items 
- * in the game world. Are items such as backpacks, torches, clothing, ropes, tents and food.*/
+
+/*
+ * This class is a specialization of the abstract class Item. Represents the
+ * most mundane items in the game world. Are items such as backpacks, torches,
+ * clothing, ropes, tents and food.
+ */
 public class SmallStone extends SimpleItem {
 	
 	private static final String NAME_OF_STONE = "Small Stone";
@@ -9,19 +13,19 @@ public class SmallStone extends SimpleItem {
 	
 	private static SmallStone instanceOfSmallStone = null;
 	
-	private SmallStone(String denomination, double totalWeight) {
-		super(denomination, totalWeight);
+	private SmallStone( String denomination, double totalWeight ) {
+		super( denomination, totalWeight );
 		
-		this.setItemRarity(ClassificationOfRarity.COMMON);
+		this.setItemRarity( ClassificationOfRarity.COMMON );
 	}
 	
 	public SmallStone getInstance() {
 		
-		if(instanceOfSmallStone != null) {
+		if( instanceOfSmallStone != null ) {
 			// Nothing To Do
 			
 		} else {
-			instanceOfSmallStone = new SmallStone(NAME_OF_STONE, STONE_WEIGHT);
+			instanceOfSmallStone = new SmallStone( NAME_OF_STONE, STONE_WEIGHT );
 		}
 		
 		return instanceOfSmallStone;
