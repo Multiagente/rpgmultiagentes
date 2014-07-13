@@ -1,9 +1,18 @@
+/*
+ * File: Map.java 
+ * Purpose: This file refers to the map.
+ */
 package br.unb.sma.dd.world.map;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * This class is a representation of the world. Through it, it's possible get
+ * around and set the position of the objects in the world.
+ */
 
 public class Map {
 	

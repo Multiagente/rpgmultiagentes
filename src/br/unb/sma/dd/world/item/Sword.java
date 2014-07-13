@@ -1,7 +1,11 @@
+/*
+ * File: Sword.java 
+ * Purpose: This file brings the implementation of swords.
+ */
 package br.unb.sma.dd.world.item;
 
 
-/*
+/**
  * This class is a generalization of the type of weapon known as sword.
  * Basically, it is an attack item with a blade, specializing in slashing
  * damage.

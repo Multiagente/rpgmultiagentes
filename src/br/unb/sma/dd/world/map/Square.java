@@ -1,3 +1,6 @@
+/*
+ * This class is the unit that forms the map.
+ */
 package br.unb.sma.dd.world.map;
 
 
@@ -8,6 +11,11 @@ import java.util.List;
 
 import br.unb.sma.dd.world.item.Item;
 
+/**
+ * This class is the unit that forms the map. While the map defines the world 
+ * in its totality, the square represents a portion of this world. 
+ * Not necessarily all have the same square size.
+ */
 
 public class Square {
 	

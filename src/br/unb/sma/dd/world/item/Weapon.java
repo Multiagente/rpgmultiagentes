@@ -1,7 +1,11 @@
+/*
+ * File: Weapon.java 
+ * Purpose: This file brings the implementation of weapons.
+ */
 package br.unb.sma.dd.world.item;
 
 
-/*
+/**
  * This class is a specialization of the abstract class Item. Represents attack
  * items for both the player characters and for the NPCs. There are different
  * types of weapons in the game world and its greatest distinction is between

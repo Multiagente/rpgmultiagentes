@@ -1,3 +1,7 @@
+/*
+ * File: ItemsHandlerAgent.java 
+ * Purpose: This file brings the implementation of the handler items.
+ */
 package br.unb.sma.dd.world.item;
 
 
@@ -11,7 +15,7 @@ import br.unb.sma.dd.world.map.Map;
 import br.unb.sma.dd.world.map.Square;
 
 
-/*
+/**
  * This agent is an administrator of items. More specifically, It manages simple
  * items, with little differentiation among his peers. As a stone that does not
  * have many differences from one another stone. This agent is intended to

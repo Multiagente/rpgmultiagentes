@@ -1,7 +1,11 @@
+/*
+ * File: Armor.java 
+ * Purpose: This is a abstract class about armors in the game.
+ */
 package br.unb.sma.dd.world.item;
 
 
-/*
+/**
  * This class is a specialization of the abstract class Item. Is protective
  * items for both the player characters and for the NPCs. Can be classified into
  * common, uncommon, rare and unique (legendary) items.
