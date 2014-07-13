@@ -1,6 +1,6 @@
-/* File:		TODO: put name of the file.
- * Purpose: TODO: put a text about the purpose of the file.
- * */
+/* File:		CharacterDao.java.
+ * Purpose: This file brings the implementation of the class CharacterDao.
+ */
 package br.unb.sma.dd.infrastructure.dao;
 
 

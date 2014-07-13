@@ -1,5 +1,5 @@
-/* File:		TODO: put name of the file.
- * Purpose: TODO: put a text about the purpose of the file.
+/* File:		DBConnector.java.
+ * Purpose: This file brings the implementation of the class DBConnector.
  * */
 package br.unb.sma.dd.infrastructure.persistenceHelper;
 
