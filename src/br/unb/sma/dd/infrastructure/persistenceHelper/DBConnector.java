@@ -1,6 +1,7 @@
-/* File:		DBConnector.java.
- * Purpose: This file brings the implementation of the class DBConnector.
- * */
+/*
+ * File: DBConnector.java. Purpose: This file brings the implementation of the
+ * class DBConnector.
+ */
 package br.unb.sma.dd.infrastructure.persistenceHelper;
 
 
@@ -11,7 +12,10 @@ import com.mongodb.DBCollection;
 import com.mongodb.MongoClient;
 
 
-/** TODO: put a text about the this class. */
+/**
+ * Class responsible for creating and maintaining the connection to the
+ * database.
+ */
 public class DBConnector {
 	
 	private static DBConnector instance = null;
@@ -34,8 +38,13 @@ public class DBConnector {
 		
 		return instance;
 	}
-
-	/** TODO: put a text about this method. */
+	
+	/**
+	 * Returns the table in the database specified by name.
+	 * 
+	 * @param tableName the name of the table.
+	 * @return DBCollection the table that has been requested.
+	 */
 	public DBCollection getTable( String tableName ) {
 		DB database = mongo.getDB( "rpgMultiagentesDb" );
 		DBCollection table = database.getCollection( tableName );

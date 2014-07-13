@@ -1,5 +1,6 @@
-/* File:		CharacterDao.java.
- * Purpose: This file brings the implementation of the class CharacterDao.
+/*
+ * File: CharacterDao.java. Purpose: This file brings the implementation of the
+ * class CharacterDao.
  */
 package br.unb.sma.dd.infrastructure.dao;
 
@@ -12,7 +13,11 @@ import com.mongodb.CommandResult;
 import com.mongodb.DBCollection;
 
 
-/** TODO: put a text about the this class. */
+/**
+ * This class is responsible for all communications between the game characters
+ * and the database, enabling the record in the database of character
+ * information.
+ */
 public class CharacterDao {
 	
 	private DBConnector dbConnector;
@@ -31,7 +36,13 @@ public class CharacterDao {
 		return instance;
 	}
 	
-	/** TODO: put a text about this method. */
+	/**
+	 * Inserts the character passed as a parameter in the database.
+	 * 
+	 * @param character the character you want to insert in the database.
+	 * @return boolean indication of the result of the operation. If there was
+	 *         successful returns true. If failure occurred return false.
+	 */
 	public boolean insertCharacter( Character character ) {
 		DBCollection table = dbConnector.getTable( "characterTable" );
 		BasicDBObject document = new BasicDBObject();
