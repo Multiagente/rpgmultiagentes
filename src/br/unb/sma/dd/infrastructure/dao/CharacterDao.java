@@ -34,7 +34,7 @@ public class CharacterDao {
 			instanceCharacterDao = new CharacterDao();
 			
 		} else {
-			/*! Nothing To Do. */
+			/* ! Nothing To Do. */
 		}
 		
 		return instanceCharacterDao;
@@ -48,12 +48,16 @@ public class CharacterDao {
 	 *         successful returns true. If failure occurred return false.
 	 */
 	public boolean insertCharacter( Character character ) {
-		DBCollection table = dbConnector.getTable( CHARACTERS_TABLE );
-		BasicDBObject document = new BasicDBObject();
-		// Put Character data here like:
-		// document.put("name", character.getName());
-		// document.put("strength", character.getStrength());
-		CommandResult result = table.insert( document ).getLastError();
+		DBCollection charactersTable = dbConnector.getTable( CHARACTERS_TABLE );
+		BasicDBObject charactersDocument = new BasicDBObject();
+		
+		/*
+		 * TODO: Add the values to be stored in the database related to the
+		 * 		character data.
+		 */
+		
+		CommandResult result = charactersTable.insert( charactersDocument )
+		      .getLastError();
 		return result.ok();
 	}
 }
