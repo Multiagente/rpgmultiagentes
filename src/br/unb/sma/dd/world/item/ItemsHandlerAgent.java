@@ -31,7 +31,7 @@ public class ItemsHandlerAgent extends Agent {
 		addBehaviour( new ReplacementBehaviour( this, TEN_MINUTES ) );
 	}
 	
-	/*
+	/**
 	 * This behavior is meant to check whether a specific item is missing in a
 	 * given location. If it is missing, the item must be replaced.
 	 */
@@ -55,10 +55,12 @@ public class ItemsHandlerAgent extends Agent {
 			searchMissingItems();
 		}
 		
-		/*
+		/**
 		 * Through this method go up around the world (by means of squares). This
 		 * way you can analyze each of squares and observe if there are any
 		 * missing item.
+		 * 
+		 * @return void
 		 */
 		private void searchMissingItems() {
 			
@@ -68,7 +70,7 @@ public class ItemsHandlerAgent extends Agent {
 				verifiedItem = checkForItems( currentSquare );
 				
 				if( verifiedItem == PRESENT_ITEM ) {
-					// Nothing To Do
+					/*! Nothing To Do. */
 					
 				} else {
 					// Replace missing item
@@ -78,10 +80,13 @@ public class ItemsHandlerAgent extends Agent {
 			}
 		}
 		
-		/*
+		/**
 		 * Makes checking if there is an item missing from a square. To do so,
 		 * makes use of a collection of objects, a Map. Through this map compares
 		 * the content that should be in square and what actually is in it.
+		 * 
+		 * @param currentSquare is a square that handler is there.
+		 * @return boolean is a answer if the item exist or not in the square.
 		 */
 		private boolean checkForItems( Square currentSquare ) {
 			
@@ -117,7 +122,7 @@ public class ItemsHandlerAgent extends Agent {
 			for( Item checkingItem : correctListItems ) {
 				
 				if( itemsCurrentSquare.contains( checkingItem ) ) {
-					// Nothing To Do
+					/*! Nothing To Do */
 					
 				} else {
 					missingItem = checkingItem;

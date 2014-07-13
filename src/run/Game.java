@@ -19,7 +19,7 @@ public class Game {
 		
 		Map map = Map.getMap();
 		
-		map.initMap();
+		map.initializeMap();
 		
 		Iterator<Square> i = map.getArrayMap().iterator();
 		while (i.hasNext()) {

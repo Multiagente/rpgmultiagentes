@@ -19,34 +19,37 @@ import br.unb.sma.dd.world.item.Item;
 
 public class Square {
 	
-	private String title;
-	private String description;
-	private List<Item> items;
-	private List<AID> charsAID;
-	private Square north, south, east, west = null;
+	private String nameSquare;
+	private String descriptionSquare;
+	private List<Item> itemsSquare;
+	private List<AID> charactersAIDSquare;
+	private Square north = null;
+	private Square south = null;
+	private Square east  = null;
+	private Square west  = null;
 	
 	public Square( String title, String description ) {
 		
-		charsAID = new ArrayList<AID>();
-		this.title = title;
-		this.description = description;
+		charactersAIDSquare = new ArrayList<AID>();
+		this.nameSquare = title;
+		this.descriptionSquare = description;
 		
 	}
 	
 	public String getTitle() {
-		return title;
+		return nameSquare;
 	}
 	
 	public void setTitle( String title ) {
-		this.title = title;
+		this.nameSquare = title;
 	}
 	
 	public String getDescription() {
-		return description;
+		return descriptionSquare;
 	}
 	
 	public void setDescription( String description ) {
-		this.description = description;
+		this.descriptionSquare = description;
 	}
 	
 	public Square getNorth() {
@@ -85,29 +88,57 @@ public class Square {
 			this.west = west;
 	}
 	
-	// metodos para adicionar e retirar da lista os players que estão na sala..
+	/**
+	 * This method adds an agent in the square.
+	 * 
+	 * @param character is a user.
+	 * @return void.
+	 */
 	public synchronized void addAgent( AID character ) {
-		charsAID.add( character );
+		charactersAIDSquare.add( character );
 	}
 	
-	public synchronized void removeChar( AID character ) {
-		if( charsAID.size() > 0 )
-			charsAID.remove( character );
+	/**
+	 * This method removes an agent in the square.
+	 * 
+	 * @param character is a user.
+	 * @return void.
+	 */
+	public synchronized void removeCharacter( AID character ) {
+		if( charactersAIDSquare.size() > 0 )
+			charactersAIDSquare.remove( character );
 	}
 	
-	public synchronized List<AID> charsInside() {
-		return charsAID;
+	/**
+	 * This method lists the agent in the square.
+	 * 
+	 * @return List<AID> is a agent's list.
+	 */	
+	public synchronized List<AID> charactersInside() {
+		return charactersAIDSquare;
 	}
 	
+	/**
+	 * This method adds an item in the square.
+	 * 
+	 * @param Item is a new item. 
+	 * @return void.
+	 */
 	public void addItem( Item item ) {
-		items.add( item );
+		itemsSquare.add( item );
 	}
 	
+	/**
+	 * This method removes an item in the square.
+	 * 
+	 * @param Item is a item the to be removed. 
+	 * @return void.
+	 */
 	public void removeItem( Item item ) {
-		items.remove( item );
+		itemsSquare.remove( item );
 	}
 	
 	public List<Item> getItems() {
-		return this.items;
+		return this.itemsSquare;
 	}
 }

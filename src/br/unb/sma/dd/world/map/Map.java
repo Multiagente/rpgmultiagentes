@@ -13,10 +13,9 @@ import java.util.List;
  * This class is a representation of the world. Through it, it's possible get
  * around and set the position of the objects in the world.
  */
-
 public class Map {
 	
-	private static Map instance = null;
+	private static Map instanceMap = null;
 	private List<Square> arrayMap;
 	
 	private Map() {
@@ -29,23 +28,34 @@ public class Map {
 	
 	public static Map getMap() {
 		
-		if( instance == null ) {
+		if( instanceMap == null ) {
 			/*
 			 * At this point we can setup our default map it will include the
 			 * squares (the number is arbitrary) and all the characteristics of the
 			 * square, items, description etc.
 			 */
-			instance = new Map();
+			instanceMap = new Map();
 		}
 		
-		return instance;
+		return instanceMap;
 	}
 	
+	/**
+	 * This method adds a square on the map.
+	 * 
+	 * @param square is a new square on the map.
+	 * @return void.
+	 */
 	public void addSquare( Square square ) {
 		getArrayMap().add( square );
 	}
 	
-	public void initMap() {
+	/**
+	 * This method initializes the map.
+	 * 
+	 * @return void.
+	 */
+	public void initializeMap() {
 		
 		Square firstRoom = new Square( "The Start Place",
 		      "This is where our hero starts, the central park." );

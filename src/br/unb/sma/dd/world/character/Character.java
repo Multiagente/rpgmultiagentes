@@ -127,7 +127,7 @@ public class Character extends Agent {
 		@Override
 		protected void onTick() {
 			AID id;
-			List<AID> listChars = getPosition().charsInside();
+			List<AID> listChars = getPosition().charactersInside();
 			id = listChars.get((int) (Math.random()*1000) % listChars.size());
 			fight(id);
 		}
@@ -202,7 +202,7 @@ public class Character extends Agent {
 		
 	private void exitRoom() {
 		ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
-		List<AID> listChars = getPosition().charsInside();
+		List<AID> listChars = getPosition().charactersInside();
 		if(listChars.size()>1){
 			Iterator<AID> i = listChars.iterator();
 			while(i.hasNext()){
@@ -354,7 +354,7 @@ public class Character extends Agent {
 	private void updatePosition(Square newPos) throws FIPAException {
 
 		Square sqr = getPosition();
-		sqr.removeChar(this.getAID());
+		sqr.removeCharacter(this.getAID());
 		setPosition(newPos);
 		sqr = getPosition();
 		sqr.addAgent(this.getAID());
@@ -374,7 +374,7 @@ public class Character extends Agent {
 		// value é o quanto a vida deste agente será reduzida.
 		if(getHealthPoints()<0){
 			setHealthPoints(0);
-			getPosition().removeChar(this.getAID());
+			getPosition().removeCharacter(this.getAID());
 			this.doDelete();
 		}
 		else
