@@ -20,20 +20,24 @@ import com.mongodb.DBCollection;
  */
 public class CharacterDao {
 	
+	private static final String CHARACTERS_TABLE = "characterTable";
+	
 	private DBConnector dbConnector;
-	private static CharacterDao instance = null;
+	private static CharacterDao instanceCharacterDao = null;
 	
 	private CharacterDao() {
 		dbConnector = DBConnector.getInstance();
 	}
 	
 	public CharacterDao getInstance() {
-		if( instance == null ) {
-			instance = new CharacterDao();
+		if( instanceCharacterDao == null ) {
+			instanceCharacterDao = new CharacterDao();
 			
-		} // TODO: put the default behavior.
+		} else {
+			/*! Nothing To Do. */
+		}
 		
-		return instance;
+		return instanceCharacterDao;
 	}
 	
 	/**
@@ -44,7 +48,7 @@ public class CharacterDao {
 	 *         successful returns true. If failure occurred return false.
 	 */
 	public boolean insertCharacter( Character character ) {
-		DBCollection table = dbConnector.getTable( "characterTable" );
+		DBCollection table = dbConnector.getTable( CHARACTERS_TABLE );
 		BasicDBObject document = new BasicDBObject();
 		// Put Character data here like:
 		// document.put("name", character.getName());

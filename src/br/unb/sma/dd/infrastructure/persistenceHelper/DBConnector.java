@@ -17,13 +17,17 @@ import com.mongodb.MongoClient;
  * database.
  */
 public class DBConnector {
+
+	private static final String NAME_OF_DATABASE = "rpgMultiagentesDb";
+	private static final String HOST = "localhost";
+	private static final int PORT = 27017;
 	
-	private static DBConnector instance = null;
+	private static DBConnector instanceDBConnector = null;
 	private MongoClient mongo;
 	
 	private DBConnector() {
 		try {
-			mongo = new MongoClient( "localhost", 27017 );
+			mongo = new MongoClient( HOST, PORT );
 			
 		} catch( UnknownHostException e ) {
 			e.printStackTrace();
@@ -31,12 +35,14 @@ public class DBConnector {
 	}
 	
 	public static DBConnector getInstance() {
-		if( instance == null ) {
-			instance = new DBConnector();
+		if( instanceDBConnector == null ) {
+			instanceDBConnector = new DBConnector();
 			
-		} // TODO: put the default behavior.
+		} else {
+			/*! Nothing To Do. */
+		}
 		
-		return instance;
+		return instanceDBConnector;
 	}
 	
 	/**
@@ -46,8 +52,9 @@ public class DBConnector {
 	 * @return DBCollection the table that has been requested.
 	 */
 	public DBCollection getTable( String tableName ) {
-		DB database = mongo.getDB( "rpgMultiagentesDb" );
+		DB database = mongo.getDB( NAME_OF_DATABASE );
 		DBCollection table = database.getCollection( tableName );
+		
 		return table;
 	}
 }
