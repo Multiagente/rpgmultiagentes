@@ -6,7 +6,7 @@ package br.unb.sma.dd.infrastructure.dao;
 
 
 import br.unb.sma.dd.infrastructure.persistenceHelper.DBConnector;
-import br.unb.sma.dd.world.character.Character;
+import br.unb.sma.dd.world.character.CharacterAgent;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.CommandResult;
@@ -47,7 +47,7 @@ public class CharacterDao {
 	 * @return boolean indication of the result of the operation. If there was
 	 *         successful returns true. If failure occurred return false.
 	 */
-	public boolean insertCharacter( Character character ) {
+	public boolean insertCharacter( CharacterAgent character ) {
 		DBCollection charactersTable = dbConnector.getTable( CHARACTERS_TABLE );
 		BasicDBObject charactersDocument = new BasicDBObject();
 		
