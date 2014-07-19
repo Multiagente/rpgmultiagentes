@@ -1,5 +1,5 @@
 /*
- * File: FactoryNPC.java
+ * File: 	FactoryNPC.java
  * Purpose: Brings the implementation of a design pattern, a factory to build 
  * the type NPC agents.
  */
@@ -15,6 +15,7 @@ public class FactoryNPC {
 	public static FactoryNPC factory;
 	
 	protected FactoryNPC() {
+		/*! Empty Constructor. */
 	}
 	
 	public static FactoryNPC getFactory() {

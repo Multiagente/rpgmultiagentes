@@ -1,5 +1,5 @@
 /*
- * File: LevelOfChallenge.java
+ * File: 	LevelOfChallenge.java
  * Purpose: Brings the implementation of a list that provides the challenge 
  * levels of players.
  */

@@ -1,5 +1,6 @@
 /*
- * File: Character.java Purpose: This is a agent that represents a character in
+ * File: 	Character.java 
+ * Purpose: This is a agent that represents a character in
  * the game.
  */
 package br.unb.sma.dd.world.character;
