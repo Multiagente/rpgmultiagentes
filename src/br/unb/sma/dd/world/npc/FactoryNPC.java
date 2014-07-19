@@ -1,6 +1,7 @@
 /*
- * File: FactoryNPC.java Purpose: Brings the implementation of a design pattern,
- * a factory to build the type NPC agents.
+ * File: FactoryNPC.java
+ * Purpose: Brings the implementation of a design pattern, a factory to build 
+ * the type NPC agents.
  */
 package br.unb.sma.dd.world.npc;
 
