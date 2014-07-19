@@ -8,7 +8,7 @@ import br.unb.sma.dd.world.map.Square;
 import jade.core.Agent;
 import jade.core.behaviours.TickerBehaviour;
 
-public class Wolf extends Npc {
+public class Wolf extends NpcAgent {
 
 	private static final long serialVersionUID = 6562721606710446899L;
 
