@@ -28,14 +28,14 @@ public class ItemsHandlerAgent extends Agent {
 	private static final long TEN_MINUTES = 600000;
 	
 	protected void setup() {
-		addBehaviour( new ReplacementBehaviour( this, TEN_MINUTES ) );
+		addBehaviour( new ReplacementItemBehaviour( this, TEN_MINUTES ) );
 	}
 	
 	/**
 	 * This behavior is meant to check whether a specific item is missing in a
 	 * given location. If it is missing, the item must be replaced.
 	 */
-	private class ReplacementBehaviour extends TickerBehaviour {
+	private class ReplacementItemBehaviour extends TickerBehaviour {
 		
 		private static final long serialVersionUID = 5351217842335272255L;
 		
@@ -46,7 +46,7 @@ public class ItemsHandlerAgent extends Agent {
 		private List<Square> squaresWorld = map.getArrayMap();
 		private java.util.Map<Square, List<Item>> itemsCatalog = new HashMap<Square, List<Item>>();
 		
-		public ReplacementBehaviour( Agent itemHandlerAgent, long period ) {
+		public ReplacementItemBehaviour( Agent itemHandlerAgent, long period ) {
 			super( itemHandlerAgent, period );
 		}
 		

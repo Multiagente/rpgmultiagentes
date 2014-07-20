@@ -41,7 +41,7 @@ public abstract class NpcAgent extends Agent {
 	
 	/** Start agent */
 	protected void setup() {
-		addBehaviour( new CheckController() );
+		addBehaviour( new TreatmentMessageBehaviour() );
 		
 	}
 }

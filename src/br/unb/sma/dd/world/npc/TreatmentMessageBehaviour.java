@@ -9,11 +9,11 @@ import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 
 
-public class CheckController extends CyclicBehaviour {
+public class TreatmentMessageBehaviour extends CyclicBehaviour {
 	
 	private static final long serialVersionUID = 688946409222739002L;
 	
-	public CheckController() {
+	public TreatmentMessageBehaviour() {
 		/*! Empty Constructor. */
 	}
 	
