@@ -25,10 +25,10 @@ import br.unb.sma.dd.world.map.Square;
 public class ItemsHandlerAgent extends Agent {
 	
 	private static final long serialVersionUID = 1819175160277518404L;
-	private static final long TEN_MINUTES = 600000;
+	private static final long INTERVAL_FOR_CHECKING = 600000; // Ten minutes.
 	
 	protected void setup() {
-		addBehaviour( new ReplacementItemBehaviour( this, TEN_MINUTES ) );
+		addBehaviour( new ReplacementItemBehaviour( this, INTERVAL_FOR_CHECKING ) );
 	}
 	
 	/**

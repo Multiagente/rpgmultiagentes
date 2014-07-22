@@ -14,12 +14,12 @@ package br.unb.sma.dd.world.item;
  */
 public abstract class Weapon extends Item {
 	
-	// Types of weapons.
+	/* Types of weapons. */
 	protected static final String CUTTING = "Cortante";
 	protected static final String PIERCING = "Perfurante";
 	protected static final String CONCUSSION = "Concussão";
 	
-	// Standard distances for increment of weapons ranged attack.
+	/* Standard distances for increment of weapons ranged attack. */
 	protected static final int WIHTOUT_INCREMENT_OF_DISTANCE = 0;
 	protected static final int THREE_METERS = 3;
 	protected static final int NINE_METERS = 9;

@@ -11,12 +11,13 @@ package br.unb.sma.dd.world.item;
  * that most of the characters is capable of handling.
  */
 public class LongSword extends Sword {
+	private static final int DAMAGE_LONG_SWORD = 8;
 	
 	public LongSword( String denomination, double totalWeight,
 	      ClassificationOfRarity rarity ) {
 		
 		super( denomination, totalWeight, rarity );
 		
-		this.setDamage( 8 );
+		this.setDamage( DAMAGE_LONG_SWORD );
 	}
 }
